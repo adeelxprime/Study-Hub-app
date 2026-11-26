@@ -14,9 +14,13 @@ import {
   Image,
   StatusBar,
   BackHandler,
+  Platform,
+  Linking,
   useWindowDimensions
 } from 'react-native';
 import { Ionicons } from '@expo/vector-icons';
+
+const APK_DOWNLOAD_URL = 'https://github.com/adeelxprime/studyhub-ai-student-assistant/releases/download/v1.0.0/StudyHub.apk';
 
 // Universal Safe Storage (Memory + LocalStorage fallback for Snack & Web)
 const _memStore = {};
@@ -641,6 +645,29 @@ function SidebarContent({ state, updateState, activeTab, moreView, navigateTo, t
           );
         })}
       </ScrollView>
+
+      {/* DOWNLOAD ANDROID APK (WEB ONLY) */}
+      {Platform.OS === 'web' && (
+        <TouchableOpacity
+          style={{
+            flexDirection: 'row',
+            alignItems: 'center',
+            justifyContent: 'center',
+            backgroundColor: '#1c2f44',
+            marginHorizontal: 12,
+            marginBottom: 10,
+            paddingVertical: 10,
+            borderRadius: 10,
+            gap: 6
+          }}
+          onPress={() => Linking.openURL(APK_DOWNLOAD_URL)}
+        >
+          <Ionicons name="logo-android" size={16} color="#4ade80" />
+          <Text style={{ fontSize: 12, fontWeight: '700', color: '#ffffff' }}>
+            Download Android APK
+          </Text>
+        </TouchableOpacity>
+      )}
 
       {/* SIDEBAR FOOTER */}
       <View style={{
@@ -1445,6 +1472,28 @@ function AuthScreen({ onLoginSuccess }) {
                             1-Tap Quick Demo Student Login
                         </Text>
                     </TouchableOpacity>
+
+                    {/* DOWNLOAD ANDROID APK (WEB ONLY) */}
+                    {Platform.OS === 'web' && (
+                        <TouchableOpacity
+                            style={{
+                                flexDirection: 'row',
+                                alignItems: 'center',
+                                justifyContent: 'center',
+                                backgroundColor: '#1c2f44',
+                                marginTop: 10,
+                                paddingVertical: 12,
+                                borderRadius: 14,
+                                gap: 8
+                            }}
+                            onPress={() => Linking.openURL(APK_DOWNLOAD_URL)}
+                        >
+                            <Ionicons name="logo-android" size={18} color="#4ade80" />
+                            <Text style={{ fontSize: 13, fontWeight: '700', color: '#ffffff' }}>
+                                Download Android App (.apk)
+                            </Text>
+                        </TouchableOpacity>
+                    )}
 
                     {/* FOOTER SWITCH */}
                     <TouchableOpacity
