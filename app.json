@@ -1,0 +1,73 @@
+{
+  "expo": {
+    "name": "StudyHub - AI Student Study Assistant",
+    "slug": "studyhub-ai-student-assistant",
+    "version": "1.0.0",
+    "platforms": [
+      "android",
+      "ios",
+      "web"
+    ],
+    "orientation": "portrait",
+    "icon": "./assets/icon.png",
+    "userInterfaceStyle": "light",
+    "splash": {
+      "backgroundColor": "#1c2f44"
+    },
+    "ios": {
+      "supportsTablet": true
+    },
+    "android": {
+      "package": "com.studyhub.studentassistant",
+      "versionCode": 1,
+      "adaptiveIcon": {
+        "backgroundColor": "#1c2f44",
+        "foregroundImage": "./assets/android-icon-foreground.png",
+        "backgroundImage": "./assets/android-icon-background.png",
+        "monochromeImage": "./assets/android-icon-monochrome.png"
+      },
+      "permissions": [
+        "android.permission.CAMERA",
+        "android.permission.READ_EXTERNAL_STORAGE",
+        "android.permission.WRITE_EXTERNAL_STORAGE",
+        "android.permission.READ_MEDIA_IMAGES",
+        "android.permission.POST_NOTIFICATIONS",
+        "android.permission.VIBRATE",
+        "android.permission.RECORD_AUDIO"
+      ],
+      "predictiveBackGestureEnabled": false
+    },
+    "web": {
+      "favicon": "./assets/favicon.png",
+      "bundler": "metro"
+    },
+    "plugins": [
+      "expo-sharing",
+      [
+        "expo-image-picker",
+        {
+          "photosPermission": "The app needs access to your photos to attach lecture board images.",
+          "cameraPermission": "The app needs access to your camera to take board photos for AI OCR."
+        }
+      ],
+      [
+        "expo-document-picker",
+        {
+          "iCloudContainerEnvironment": "Production"
+        }
+      ],
+      [
+        "expo-notifications",
+        {
+          "icon": "./assets/icon.png",
+          "color": "#1c2f44"
+        }
+      ]
+    ],
+    "extra": {
+      "eas": {
+        "projectId": "710ca5de-70d3-4ce0-83cf-d534c1352620"
+      }
+    }
+  }
+}
